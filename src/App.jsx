@@ -13,7 +13,6 @@ function App() {
       return;
     }
     setExpenses([...expenses, { detail, amount: Number(amount) }]);
-    setBudget("");
     setDetail("");
     setAmount("");
   }
