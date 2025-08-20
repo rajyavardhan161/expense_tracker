@@ -2,29 +2,43 @@ import { useState } from "react";
 import Summary from "./Summary";
 
 function App() {
-  const [budget, setBudget] = useState(0);
+  const [tempBudget, setTempBudget] = useState(""); 
+  const [budget, setBudget] = useState(0);          
   const [detail, setDetail] = useState("");
   const [amount, setAmount] = useState("");
   const [expenses, setExpenses] = useState([]);
 
-
   function addExpense() {
-    if (!detail || !amount) {
+    if (!detail || !amount || !tempBudget) {
+      alert("Please enter budget, detail and amount!");
       return;
     }
-    setExpenses([...expenses, { detail, amount: Number(amount) }]);
+
+    if (budget === 0) {
+      setBudget(Number(tempBudget));
+    }
+
+    const newAmount = Number(amount);
+    const spent = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+
+    if (spent + newAmount > Number(tempBudget)) {
+      alert("Your expense is more than your budget!");
+      return;
+    }
+
+    setExpenses([...expenses, { detail, amount: newAmount }]);
     setDetail("");
     setAmount("");
   }
 
   return (
-
     <div className="p-4">
+
       <input
         type="number"
         placeholder="Enter Budget"
-        value={budget || ""}
-        onChange={(e) => setBudget(Number(e.target.value))}
+        value={tempBudget}
+        onChange={(e) => setTempBudget(e.target.value)}
         className="border p-1 m-1"
       />
       <br />
@@ -66,7 +80,6 @@ function App() {
           </div>
         ))}
       </div>
-
 
       <Summary budget={budget} expenses={expenses} />
     </div>
