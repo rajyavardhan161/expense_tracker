@@ -10,5 +10,4 @@ function Summary({ budget, expenses }) {
     </div>
   );
 }
-
 export default Summary;
