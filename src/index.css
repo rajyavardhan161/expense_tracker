@@ -16,3 +16,10 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+.btn {
+    border: 1px solid;
+    padding: 8px;
+    margin: 4px;
+    border-radius: 3px;
+    background-color: rgba(85, 196, 240, 0.466)
+}

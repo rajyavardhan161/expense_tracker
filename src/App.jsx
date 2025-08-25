@@ -56,7 +56,7 @@ function App() {
       />
       <br />
 
-      <button onClick={addExpense} className="border p-2 bg-blue-300">
+      <button onClick={addExpense} className="btn">
         Add Expense
       </button>
 
