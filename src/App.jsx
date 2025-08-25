@@ -8,7 +8,7 @@ function App() {
   const [expenses, setExpenses] = useState([]);
 
   function addExpense() {
-    if (!budget || !detail || !amount) {
+    if (!budget || !detail || !amount) {  
       alert("Please enter all detail");
       return;
     }
@@ -27,7 +27,7 @@ function App() {
   }
 
   return (
-    <div className="p-4">
+    <div className="main p-4">
 
       <input
         type="number"
